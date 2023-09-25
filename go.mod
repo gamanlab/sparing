@@ -1,4 +1,4 @@
-module github.com/gamanlab/sparing-api
+module github.com/gamanlab/sparing
 
 go 1.20
 

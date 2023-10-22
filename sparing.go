@@ -68,13 +68,13 @@ func (s *sparing) getSecret() (string, error) {
 
 	defer resp.Body.Close()
 
-	if resp.StatusCode != http.StatusOK {
-		err := fmt.Errorf("status code: %d", resp.StatusCode)
+	body, err := io.ReadAll(resp.Body)
+	if err != nil {
 		return "", err
 	}
 
-	body, err := io.ReadAll(resp.Body)
-	if err != nil {
+	if resp.StatusCode != http.StatusOK {
+		err := fmt.Errorf("status code: %d. Body: %s", resp.StatusCode, string(body))
 		return "", err
 	}
 

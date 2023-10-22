@@ -148,7 +148,7 @@ func TestSubmit(t *testing.T) {
 	api := NewSparingAPI("", svr.URL, "")
 	err := api.Submit(secret, ApiPayload{})
 	if err != nil {
-		assert.EqualError(t, err, "status code: 404. Body: ")
+		assert.EqualError(t, err, "status code: 404")
 	}
 
 	api = NewSparingAPI("", svr.URL+"/submit", "")

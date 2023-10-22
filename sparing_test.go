@@ -27,14 +27,14 @@ func TestGetSecret(t *testing.T) {
 	api := NewSparingAPI(svr.URL, "", "")
 	_, err := api.GetSecret()
 	if err != nil {
-		assert.EqualError(t, err, "status code: 404")
+		assert.EqualError(t, err, "status code: 404. Body: ")
 		return
 	}
 
 	api = NewSparingAPI(svr.URL+"/secret", "", "")
 	secret, err := api.GetSecret()
 	if err != nil {
-		assert.EqualError(t, err, "status code: 404")
+		assert.EqualError(t, err, "status code: 404. Body: ")
 	}
 
 	assert.Equal(t, "secret", secret)
@@ -148,7 +148,7 @@ func TestSubmit(t *testing.T) {
 	api := NewSparingAPI("", svr.URL, "")
 	err := api.Submit(secret, ApiPayload{})
 	if err != nil {
-		assert.EqualError(t, err, "status code: 404")
+		assert.EqualError(t, err, "status code: 404. Body: ")
 	}
 
 	api = NewSparingAPI("", svr.URL+"/submit", "")
@@ -164,7 +164,7 @@ func TestSubmit(t *testing.T) {
 	})
 
 	if err != nil {
-		assert.EqualError(t, err, "status code: 404")
+		assert.EqualError(t, err, "status code: 404. Body: ")
 		return
 	}
 }
